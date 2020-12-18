@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod 
+metadata:
+  name: nscout
+spec:
+  containers:
+  - name: nscout
+    image: skeeey/nscout:latest
+    imagePullPolicy: IfNotPresent
+    command: ["/bin/sleep", "3650d"]
+    securityContext:
+      allowPrivilegeEscalation: true
+      capabilities:
+        add:
+        - ALL
+      privileged: true
+      readOnlyRootFilesystem: false
+      runAsNonRoot: false
+  hostNetwork: true
+#  nodeSelector:
+#    <your-node-label>
