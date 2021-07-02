@@ -2,11 +2,11 @@ apiVersion: v1
 kind: Pod 
 metadata:
   name: nscout
+  namespace: default
 spec:
   containers:
   - name: nscout
-    image: skeeey/nscout:latest
-    imagePullPolicy: IfNotPresent
+    image: quay.io/skeeey/nscout:latest
     command: ["/bin/sleep", "3650d"]
     securityContext:
       allowPrivilegeEscalation: true
@@ -17,5 +17,5 @@ spec:
       readOnlyRootFilesystem: false
       runAsNonRoot: false
   hostNetwork: true
-#  nodeSelector:
-#    <your-node-label>
+  nodeSelector:
+    your-node-label
